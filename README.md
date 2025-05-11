@@ -25,8 +25,10 @@ source venv/bin/activate
 ```
 
 For Windows:
-```python -m venv venv
-venv\Scripts\activate```
+```
+python -m venv venv
+venv\Scripts\activate
+```
 
 
 ### 3. Install the required dependencies
@@ -38,7 +40,8 @@ With the virtual environment activated, install all the necessary Python librari
 You need to create a .env file in the root of your project directory. The file should look like this:
 
 Example .env file:
-```FLASK_APP=app.py
+```
+FLASK_APP=app.py
 FLASK_ENV=development
 SECRET_KEY=your_secret_key_here
 
@@ -47,7 +50,8 @@ MAIL_PORT=465
 MAIL_USE_SSL=True
 MAIL_USERNAME=your_email@example.com
 MAIL_PASSWORD=your_email_password
-MAIL_DEFAULT_SENDER=your_email@example.com```
+MAIL_DEFAULT_SENDER=your_email@example.com
+```
 
 Replace the placeholders with your actual values.
 
