@@ -19,8 +19,10 @@ First, clone the project repository from GitHub to your local machine. Open your
 
 ### 2. Set up a virtual environment
 For macOS/Linux:
-```python3 -m venv venv
-source venv/bin/activate```
+```
+python3 -m venv venv
+source venv/bin/activate
+```
 
 For Windows:
 ```python -m venv venv
