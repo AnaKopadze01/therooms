@@ -17,13 +17,14 @@ Flask-based web application where users can log in, create, and decorate virtual
 
   ## Installation Instructions
 
-### 1. Clone the repository
-1. First, you'll need to clone the project repository from GitHub to your local machine. Open your terminal and run the following command:
+1. ### Clone the repository
+First, you'll need to clone the project repository from GitHub to your local machine. Open your terminal and run the following command:
 
 git clone https://github.com/AnaKopadze01/therooms.git
 cd therooms
 
-2.  Set up a virtual environment
+
+2.  ### Set up a virtual environment
 For macOS/Linux:
 python3 -m venv venv
 source venv/bin/activate
@@ -32,11 +33,11 @@ For Windows:
 python -m venv venv
 venv\Scripts\activate
 
-3.Install the required dependencies
+3. ### Install the required dependencies
 With the virtual environment activated, install all the necessary Python libraries specified in the requirements.txt file:
 pip install -r requirements.txt
 
-4. Set up environment variables
+4. ### Set up environment variables
 You need to create a .env file in the root of your project directory.
 
 Example .env file:
@@ -52,7 +53,7 @@ MAIL_USE_TLS=True
 Replace the placeholders with your actual values.
 
 
-5. Run the application
+5. ### Run the application
 In your terminal, make sure your virtual environment is still activated, and run:
 flask run
 
