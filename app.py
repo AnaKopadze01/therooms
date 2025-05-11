@@ -6,6 +6,9 @@ import os
 import json
 import re
 from flask_mail import Mail, Message
+from dotenv import load_dotenv
+load_dotenv()
+
 
 # Initialize the Flask application
 app = Flask(__name__)
@@ -15,12 +18,12 @@ DB_NAME = 'users.db'
 DATABASE = 'users.db'
 
 # Email server configuration for password reset and other notifications
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-app.config['MAIL_PORT'] = 465
-app.config['MAIL_USE_SSL'] = True
-app.config['MAIL_USERNAME'] = 'ana.kopadze31@gmail.com'  # Sender's email
-app.config['MAIL_PASSWORD'] = 'flsngmjdvkzgaxsi'          # App-specific password
-app.config['MAIL_DEFAULT_SENDER'] = 'ana.kopadze31@gmail.com'
+app.config['MAIL_SERVER'] = os.getenv('MAIL_SERVER')
+app.config['MAIL_PORT'] = int(os.getenv('MAIL_PORT'))
+app.config['MAIL_USE_SSL'] = os.getenv('MAIL_USE_SSL') == 'True'
+app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
+app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
+app.config['MAIL_DEFAULT_SENDER'] = os.getenv('MAIL_DEFAULT_SENDER')
 mail = Mail(app)
 
 # Secret key for sessions and CSRF protection
