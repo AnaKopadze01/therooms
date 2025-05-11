@@ -13,18 +13,18 @@ Flask-based web application where users can log in, create, and decorate virtual
 
 ### 1. Clone the repository
 First, clone the project repository from GitHub to your local machine. Open your terminal and run the following command:
-`git clone https://github.com/AnaKopadze01/therooms.git
-cd therooms`
+```git clone https://github.com/AnaKopadze01/therooms.git
+cd therooms```
 
 
 ### 2. Set up a virtual environment
 For macOS/Linux:
-`python3 -m venv venv
-source venv/bin/activate`
+```python3 -m venv venv
+source venv/bin/activate```
 
 For Windows:
-`python -m venv venv
-venv\Scripts\activate`
+```python -m venv venv
+venv\Scripts\activate```
 
 
 ### 3. Install the required dependencies
@@ -36,7 +36,7 @@ With the virtual environment activated, install all the necessary Python librari
 You need to create a .env file in the root of your project directory. The file should look like this:
 
 Example .env file:
-`FLASK_APP=app.py
+```FLASK_APP=app.py
 FLASK_ENV=development
 SECRET_KEY=your_secret_key_here
 
@@ -45,7 +45,7 @@ MAIL_PORT=465
 MAIL_USE_SSL=True
 MAIL_USERNAME=your_email@example.com
 MAIL_PASSWORD=your_email_password
-MAIL_DEFAULT_SENDER=your_email@example.com`
+MAIL_DEFAULT_SENDER=your_email@example.com```
 
 Replace the placeholders with your actual values.
 
