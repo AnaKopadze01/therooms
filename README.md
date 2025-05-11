@@ -57,7 +57,7 @@ Replace the placeholders with your actual values.
 In your terminal, make sure your virtual environment is still activated, and run:
 flask run
 
-This will start the development server and open it in your browser (http://localhost:5001).
+This will start the development server and open it in your browser (http://localhost:5000).
 
 
 
