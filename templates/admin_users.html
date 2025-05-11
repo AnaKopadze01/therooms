@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta information -->
+    <meta charset="UTF-8">
+    <title>Admin - View Users</title>
+
+    <!-- Link to external CSS file for styling -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    
+    <!-- Google Font for styling -->
+    <link href="https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Main heading for the admin page -->
+    <h1>Admin - View Users</h1>
+
+    <!-- User table container -->
+    <div class="user-list">
+        <table>
+            <!-- Table headers -->
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Username</th>
+                    <th>Created At</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <!-- Table body dynamically populated from Flask -->
+            <tbody>
+                {% for user in users %}
+                <!-- Each row is wrapped in a form for inline editing -->
+                <form method="POST" action="{{ url_for('edit_user', user_id=user[0]) }}" id="user-form-{{ user[0] }}">
+                    <tr id="user-{{ user[0] }}">
+
+                        <!-- Email cell: shows text by default, input when editing -->
+                        <td>
+                            <span id="email-text-{{ user[0] }}">{{ user[1] }}</span>
+                            <input type="email" name="email" value="{{ user[1] }}" id="email-input-{{ user[0] }}" style="display: none;" required>
+                        </td>
+
+                        <!-- Username cell: shows text by default, input when editing -->
+                        <td>
+                            <span id="username-text-{{ user[0] }}">{{ user[2] }}</span>
+                            <input type="text" name="username" value="{{ user[2] }}" id="username-input-{{ user[0] }}" style="display: none;" required>
+                        </td>
+
+                        <!-- Creation timestamp -->
+                        <td>{{ user[3] }}</td>
+
+                        <!-- Action buttons: Edit, Save, Cancel, Delete -->
+                        <td>
+                            <!-- Edit button shows input fields -->
+                            <button type="button" class="action-button edit-button" id="edit-btn-{{ user[0] }}" onclick="editUser({{ user[0] }})">Edit</button>
+                            
+                            <!-- Save button submits form -->
+                            <button type="submit" class="action-button" id="save-btn-{{ user[0] }}" style="display: none;">Save</button>
+
+                            <!-- Cancel button hides input fields and restores original view -->
+                            <button type="button" class="action-button" id="cancel-btn-{{ user[0] }}" style="display: none;" onclick="cancelEdit({{ user[0] }})">Cancel</button>
+
+                            <!-- Delete link with confirmation popup -->
+                            <a href="{{ url_for('delete_user', user_id=user[0]) }}" class="action-button delete-button" onclick="return confirm('Are you sure you want to delete this user?')">Delete</a>
+                        </td>
+                    </tr>
+                </form>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Navigation link back to the home page -->
+    <a class="button" href="{{ url_for('home') }}">Back to Home</a>
+
+    <!-- JavaScript for inline editing functionality -->
+    <script>
+        // Enables editing mode for a user row
+        function editUser(userId) {
+            // Hide static text fields
+            document.getElementById('email-text-' + userId).style.display = 'none';
+            document.getElementById('username-text-' + userId).style.display = 'none';
+
+            // Show input fields
+            document.getElementById('email-input-' + userId).style.display = 'inline-block';
+            document.getElementById('username-input-' + userId).style.display = 'inline-block';
+
+            // Show Save and Cancel, hide Edit
+            document.getElementById('edit-btn-' + userId).style.display = 'none';
+            document.getElementById('save-btn-' + userId).style.display = 'inline-block';
+            document.getElementById('cancel-btn-' + userId).style.display = 'inline-block';
+        }
+
+        // Cancels editing and restores original display
+        function cancelEdit(userId) {
+            // Show static text fields
+            document.getElementById('email-text-' + userId).style.display = 'inline';
+            document.getElementById('username-text-' + userId).style.display = 'inline';
+
+            // Hide input fields
+            document.getElementById('email-input-' + userId).style.display = 'none';
+            document.getElementById('username-input-' + userId).style.display = 'none';
+
+            // Show Edit button, hide Save and Cancel
+            document.getElementById('edit-btn-' + userId).style.display = 'inline-block';
+            document.getElementById('save-btn-' + userId).style.display = 'none';
+            document.getElementById('cancel-btn-' + userId).style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>

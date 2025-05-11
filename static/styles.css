@@ -1,0 +1,692 @@
+/* Reset default margin/padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Style for all page backgrounds and text */
+body {
+    background-color: #142952;
+    color: white;
+    font-family: 'Happy Monkey', sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Title styles */
+.site-title {
+    color: #d1007e;
+    font-size: 120px;
+    font-weight: bold;
+    font-family: 'Happy Monkey', sans-serif;
+    margin-bottom: 30px;
+}
+
+/* Shared login/signup box styling */
+.auth-box {
+    background-color: #142952;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    width: 300px;
+}
+
+/* Auth Box (login, signup, reset) */
+.auth-box form input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    background: #fff;
+    font-size: 16px;
+}
+
+.auth-box button {
+    width: auto;
+    display: block;
+    margin: 20px auto 0 auto;
+    padding: 12px 30px;
+    background-color: #d1007e;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.auth-box button:hover {
+    background-color: #b0006a;
+}
+
+.auth-box .links {
+    margin-top: 15px;
+}
+
+.auth-box .links a {
+    color: #aadfff;
+    text-decoration: none;
+    display: block;
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.auth-box .links a:hover {
+    text-decoration: underline;
+}
+
+/* Flash messages */
+.flash-message {
+    color: white;
+    font-size: 16px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.flash-message.success {
+    color: #4CAF50;
+}
+
+.flash-message.error {
+    color: #FF6347;
+}
+
+/* Buttons */
+button, .button {
+    padding: 12px 20px;
+    background-color: #d1007e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+button:hover, .button:hover {
+    background-color: #b0006a;
+}
+
+/* General layout styles */
+.top-left-message {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+}
+
+.top-left-message h1 {
+    margin: 0;
+    font-size: 36px;
+    color: #ffffff;
+}
+
+.top-right-logout {
+    position: absolute;
+    bottom: 30px;
+    left: 100px;
+    z-index: 9999; 
+}
+
+.home-layout {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+    padding: 50px;
+}
+
+.profile-box {
+    position: fixed;
+    top: 100px;
+    left: 40px;
+    background-color: #1c3a6e;
+    border-radius: 10px;
+    padding: 170px 20px;
+    width: 250px;
+    color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    text-align: center;
+}
+
+.avatar {
+    position: absolute;
+    top: 30px;
+    left: 70px;
+    width: 110px;
+    height: 110px;
+    background-color: #d1007e;
+    color: white;
+    font-size: 56px;
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px auto;
+}
+
+.profile-form input {
+    width: 90%;
+    margin: 8px 0;
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    font-size: 14px;
+}
+
+.profile-form .button {
+    padding: 10px 16px;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+
+/*  Admin View Users Button */
+.view-users-button {
+    position: absolute;
+    top: 400px;
+    left: 55px;
+    display: block;
+    font-size: 14px;
+    padding: 20px 20px;
+}
+
+/*  User List Inputs  */
+.user-list input[type="email"],
+.user-list input[type="text"] {
+    width: 200px;      
+    padding: 10px;      
+    font-size: 16px;    
+    border-radius: 5px;
+    border: none;
+}
+
+/*  Room Section  */
+.top-rooms-heading {
+    position: relative;
+    margin-left: 1px;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.top-rooms-heading h2 {
+    font-size: 36px;
+    font-weight: bold;
+    margin: 0;
+}
+
+/*  Create Room Button  */
+.create-room-box {
+    width: 200px;
+    height: 100px;
+    background-color: #1c3a6e;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border: 2px dashed #d1007e;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, border 0.3s ease;
+}
+
+.create-room-box:hover {
+    background-color: #d1007e;
+    border: 2px solid white;
+}
+
+.create-room-container {
+    position: fixed;
+    top: 200px;
+    right: 630px;
+    z-index: 1000;
+}
+
+/* Admin/User list page */
+.user-list {
+    background-color: #142952;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    margin: 20px auto;
+    width: 80%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #142952;
+    color: white;
+}
+
+table th {
+    background-color: #d1007e;
+    color: white;
+    padding: 12px;
+    border: 1px solid #2a3d66;
+    text-align: left;
+    font-size: 16px;
+}
+
+table td {
+    padding: 12px;
+    border: 1px solid #2a3d66;
+    text-align: left;
+    font-size: 16px;
+    background-color: inherit !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+table tr,
+table tr:hover,
+table td:hover,
+table td:focus {
+    background-color: inherit !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Table Row Colors */
+table tbody tr:nth-child(even) {
+    background-color: #1c3a6e;
+}
+
+table tbody tr:nth-child(odd) {
+    background-color: #142952;
+}
+
+/* Autofill fix */
+input:-webkit-autofill {
+    transition: background-color 9999s ease-in-out 0s;
+}
+
+.main-page {
+    position: relative;
+    min-height: 100vh;
+    padding-top: 150px; /* Adjust where you want rooms to start */
+}
+
+
+/* Rooms */
+.rooms-list {
+     display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px;
+    max-width: 600px;
+    margin-left: 770px; 
+    margin-top: -65px;
+}
+
+.room-box {
+    width: 100px;
+    height: 100px;
+    background-color: #1c3a6e;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    border: 2px dashed #d1007e;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    position: relative;
+    transition: background-color 0.3s ease, border 0.3s ease;
+}
+
+.room-box:hover {
+    background-color: #d1007e;
+    border: 2px solid white;
+}
+
+.room-name {
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+
+
+
+/* Room controls */
+.delete-btn {
+    position: absolute;
+    top: -10px;
+    right: -8px;
+    background: transparent;
+    color: #000000;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 5px;
+    transition: color 0.3s ease;
+}
+
+.delete-form {
+    margin: 0;
+    padding: 0;
+}
+
+/* Action Buttons (admin edit/delete) */
+.action-button {
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    margin: 4px;
+    border-radius: 4px;
+}
+
+.edit-button, .delete-button {
+    background-color: #b0006a;
+    color: white;
+}
+
+/* Form styles */
+form {
+    display: inline;
+}
+
+form input {
+    padding: 5px;
+    margin-right: 10px;
+}
+
+form button {
+    padding: 5px 10px;
+    background-color: #b0006a;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+form button[type="button"] {
+    background-color: #b0006a;
+}
+
+.delete-account-container {
+    position: fixed;
+    bottom: 30px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.delete-account-container button {
+    background-color: #b0006a;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.delete-account-container button:hover {
+    background-color: #b0006a;
+}
+
+/* Canvas for Room Editing */
+.canvas {
+    position: relative;
+    width: 520px;
+    height: 520px;
+    border: 2px solid #ccc;
+    background-color: #1c3a6e;
+    margin-top: 40px;
+    overflow: hidden;
+}
+
+/* Grid background on canvas */
+#canvas {
+    background-image: 
+        linear-gradient(to right, #ccc 1px, transparent 1px),
+        linear-gradient(to bottom, #ccc 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+
+/* Furniture items in the canvas */
+.furniture-placed {
+    position: absolute;
+    cursor: move;
+    z-index: 5;
+}
+
+/* Sidebar */
+.sidebar-container {
+    position: absolute;
+    top: -35px;
+    right: 780px;
+    width: 150px;
+    z-index: 1000;
+    color: white;
+    font-family: 'Happy Monkey', sans-serif;
+}
+
+.menu-header {
+    background-color: #d1007e;
+    padding: 6px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.menu-icon {
+    font-size: 10px;
+}
+
+.menu-title {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.menu-arrow {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+.sidebar {
+    margin-top: 10px;
+    background-color: #1c3a6e;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.sidebar img {
+    display: block;
+    margin: 10px auto;
+    cursor: grab;
+}
+
+.sidebar img.furniture {
+    width: 40px !important;
+    height: 40px !important;
+    object-fit: contain;
+}
+
+.hidden {
+    display: none;
+}
+
+.rotate {
+    transform: rotate(-90deg);
+}
+
+.controls {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 1000;
+}
+
+.controls button,
+.controls a {
+    padding: 10px 20px;
+    background-color: #d1007e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.controls button:hover,
+.controls a:hover {
+    background-color: #b0006a;
+}
+
+form#rename-room-form {
+    margin-bottom: 20px;
+}
+
+form#rename-room-form input[type="text"] {
+    padding: 8px;
+    font-size: 16px;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Layout for edit room */
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+}
+
+.header-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-buttons-top {
+    position: absolute;
+    top: 85px;
+    right: 50px;
+}
+
+.header-buttons .top-row {
+    display: flex;
+    gap: 8px;
+}
+
+.header-buttons .bottom-row {
+    display: flex;
+    justify-content: center;
+}
+
+/* Footer Buttons (Save / Rename / Back) */
+.footer-buttons {
+    position: fixed;
+    bottom: 20px;
+    left: 90%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+.footer-buttons button,
+.footer-buttons form button {
+    padding: 8px 12px;
+    font-size: 14px;
+    background-color: #d1007e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.footer-buttons button:hover,
+.footer-buttons form button:hover {
+    background-color: #b0006a;
+}
+
+.dragged-furniture {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+.placed-furniture {
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    z-index: 10;
+    transition: top 0.2s ease, left 0.2s ease;
+}
+
+/* Selected Furniture Highlight */
+.furniture-placed.selected {
+    outline: 2px solid white;
+    outline-offset: -2px;
+    z-index: 10;
+    cursor: move;
+}
+
+.category {
+    margin-bottom: 10px;
+}
+
+.category-header {
+    font-weight: bold;
+    cursor: pointer;
+    padding: 6px;
+    background-color: #a7b8d6;
+    color: #333;
+    border-radius: 4px;
+}
+
+.category-items {
+    display: none;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+}
+
+.category-items img {
+    width: 50px;
+    height: auto;
+    cursor: grab;
+}
+
+.category-header:hover {
+    background-color: #e0e0e0;
+}
+
+.category-header.active {
+    background-color: #ccc;
+}
+
+.edit-field {
+    font-size: 14px;
+    padding: 4px;
+    width: 90%;
+}

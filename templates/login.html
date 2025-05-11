@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic page metadata and title -->
+    <meta charset="UTF-8">
+    <title>Login - Therooms</title>
+
+    <!-- Link to the main stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+    <!-- Google Font for custom typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- App name or logo displayed at the top -->
+    <h1 class="site-title">Therooms</h1>
+
+    <!-- Container for the login box -->
+    <div class="auth-box">
+
+        <!-- Section for displaying Flask flash messages (e.g. login errors) -->
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li> <!-- Display each message inside a list item -->
+                {% endfor %}
+            </ul>
+        {% endif %}
+        {% endwith %}
+
+        <!-- Login form that submits via POST to the same route -->
+        <form method="POST">
+            <!-- Email input field -->
+            <input type="email" name="email" placeholder="Email" required>
+            <!-- Password input field -->
+            <input type="password" name="password" placeholder="Password" required>
+            <!-- Submit button -->
+            <button type="submit">Login</button>
+        </form>
+
+        <!-- Links for new users and password recovery -->
+        <div class="links">
+            <a href="{{ url_for('signup') }}">Sign Up</a> <!-- Link to registration page -->
+            <a href="{{ url_for('forgot_password') }}">Forgot Password?</a> <!-- Link to password reset -->
+        </div>
+    </div>
+
+</body>
+</html>

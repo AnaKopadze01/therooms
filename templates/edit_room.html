@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Character encoding and page title -->
+    <meta charset="UTF-8">
+    <title>Edit Room - {{ room_name }}</title>
+
+    <!-- Link to external CSS for styling -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+    <!-- Embed server-side variables (room data and ID) into JavaScript for use in the frontend -->
+    <script>
+        var gridData = {{ grid_data | tojson | safe }};  // Contains the room layout (furniture positions, etc.)
+        var roomId = {{ room_id | tojson | safe }};      // The ID of the room being edited
+    </script>
+
+    <!-- Load JavaScript file with defer to wait until HTML loads -->
+    <script src="{{ url_for('static', filename='scripts.js') }}" defer></script>
+
+    <!-- Font Awesome for icons (e.g., rotate button) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Top buttons for saving or removing the room, and rotating furniture -->
+    <div class="header-buttons header-buttons-top">
+        <div class="top-row">
+            <button onclick="saveRoom()">Save</button> 
+            <button onclick="removeRoom()">Remove</button>
+        </div>
+        <div class="bottom-row">
+            <button onclick="rotateSelected()"><i class="fas fa-rotate-right"></i></button>
+        </div>
+    </div>
+
+    <!-- Main layout container holding the canvas and sidebar -->
+    <div class="main-container">
+
+        <!-- Canvas area where furniture is placed -->
+        <div class="canvas" id="canvas"></div>
+
+        <!-- Sidebar for selecting and dragging furniture into the canvas -->
+        <div class="sidebar-container">
+            <!-- Sidebar toggle header -->
+            <div class="menu-header" onclick="toggleMenu()">
+                <span class="menu-title">Menu</span>
+                <span id="menu-arrow" class="menu-arrow">▼</span>
+            </div>
+
+            <!-- Sidebar content: hidden by default, contains furniture categories -->
+            <div id="sidebar" class="sidebar hidden">
+                <h3>Furniture</h3>
+            
+                <!-- Category: Chairs -->
+                <div class="category">
+                    <div class="category-header" onclick="toggleCategory(this)">Chairs</div>
+                    <div class="category-items">
+                        <img src="{{ url_for('static', filename='beanbag.png') }}" class="furniture" draggable="true" data-width="5" data-height="5">
+                        <img src="{{ url_for('static', filename='chair.png') }}" class="furniture" draggable="true" data-width="5" data-height="5">
+                        <img src="{{ url_for('static', filename='chair1.png') }}" class="furniture" draggable="true" data-width="5" data-height="5">
+                    </div>
+                </div>
+            
+                <!-- Category: Beds -->
+                <div class="category">
+                    <div class="category-header" onclick="toggleCategory(this)">Beds</div>
+                    <div class="category-items">
+                        <img src="{{ url_for('static', filename='bed1.png') }}" class="furniture" draggable="true" data-width="10" data-height="10">
+                    </div>
+                </div>
+            
+                <!-- Category: Sofas -->
+                <div class="category">
+                    <div class="category-header" onclick="toggleCategory(this)">Sofas</div>
+                    <div class="category-items">
+                        <img src="{{ url_for('static', filename='sofa.png') }}" class="furniture" draggable="true" data-width="10" data-height="10">
+                        <img src="{{ url_for('static', filename='sofa1.png') }}" class="furniture" draggable="true" data-width="13" data-height="13">
+                        <img src="{{ url_for('static', filename='sofa2.png') }}" class="furniture" draggable="true" data-width="12" data-height="12">
+                        <img src="{{ url_for('static', filename='sofa3.png') }}" class="furniture" draggable="true" data-width="5" data-height="5">
+                    </div>
+                </div>
+
+                <!-- Category: Tables -->
+                <div class="category">
+                    <div class="category-header" onclick="toggleCategory(this)">Tables</div>
+                    <div class="category-items">
+                        <img src="{{ url_for('static', filename='table.png') }}" class="furniture" draggable="true" data-width="9" data-height="9">
+                        <img src="{{ url_for('static', filename='table2.png') }}" class="furniture" draggable="true" data-width="9" data-height="11">
+                        <img src="{{ url_for('static', filename='table3.png') }}" class="furniture" draggable="true" data-width="13" data-height="11">
+                        <img src="{{ url_for('static', filename='table4.png') }}" class="furniture" draggable="true" data-width="13" data-height="13">
+                    </div>
+                </div>
+
+                <!-- Category: Kitchen -->
+                <div class="category">
+                    <div class="category-header" onclick="toggleCategory(this)">Kitchen</div>
+                    <div class="category-items">
+                        <img src="{{ url_for('static', filename='sink.png') }}" class="furniture" draggable="true" data-width="9" data-height="9">
+                        <img src="{{ url_for('static', filename='sink1.png') }}" class="furniture" draggable="true" data-width="9" data-height="9">
+                        <img src="{{ url_for('static', filename='sink2.png') }}" class="furniture" draggable="true" data-width="9" data-height="9">
+                        <img src="{{ url_for('static', filename='stove.png') }}" class="furniture" draggable="true" data-width="9" data-height="9">
+                        <img src="{{ url_for('static', filename='stove1.png') }}" class="furniture" draggable="true" data-width="7" data-height="4">
+                        <img src="{{ url_for('static', filename='island.png') }}" class="furniture" draggable="true" data-width="30" data-height="16">
+                        <img src="{{ url_for('static', filename='island1.png') }}" class="furniture" draggable="true" data-width="15" data-height="15">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom section with input to rename the room and a button to go back home -->
+    <div class="footer-buttons">
+        <label for="room-name-input">Room Name:</label>
+        <input type="text" id="room-name-input" value="{{ room_name }}" required>
+        <button onclick="renameRoom()">Rename Room</button>
+
+        <!-- Go back to home -->
+        <button onclick="window.location.href='{{ url_for('home') }}'">Back to Home</button>
+    </div>
+
+</body>
+</html>

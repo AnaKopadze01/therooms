@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta info and page title -->
+    <meta charset="UTF-8">
+    <title>Sign Up - Therooms</title>
+
+    <!-- Link to custom styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Main signup form container -->
+    <div class="auth-box">
+        <!-- Page heading -->
+        <h1>Sign Up</h1>
+
+        <!-- Flash message area ("email already taken") -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul>
+                    {% for category, message in messages %}
+                        <!-- Apply class based on flash message category ('error') -->
+                        <li class="flash {{ category }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+        <!-- Sign up form -->
+        <form method="POST" id="signup-form">
+
+            <!-- Email input with browser and custom validation -->
+            <input type="text" name="email" id="email" placeholder="Email" required 
+                   title="Please enter a valid email address (e.g., user@example.com)">
+            <!-- Email error message shown via JavaScript if invalid -->
+            <div id="email-error" style="color: red; display: none;">Please enter a valid email address.</div>
+
+            <!-- Username input -->
+            <input type="text" name="username" placeholder="Username" required>
+
+            <!-- Password input with regex pattern for validation -->
+            <input type="password" name="password" id="password" placeholder="Password" required
+                pattern="^(?=.*[0-9!@#$%^&*])[A-Za-z0-9!@#$%^&*]{6,}$" 
+                title="Password must be at least 6 characters and contain a number or symbol">
+            <!-- Password error message shown via JavaScript -->
+            <div id="password-error" style="color: red; display: none;">Password must be at least 6 characters and contain a number or symbol.</div>
+
+            <!-- Submit button -->
+            <button type="submit">Sign Up</button>
+        </form>
+
+        <!-- Link to login page for users who already have an account -->
+        <div class="links">
+            <a href="{{ url_for('login') }}">Already have an account?</a>
+        </div>
+    </div>
+
+    <!-- JavaScript for client-side form validation -->
+    <script>
+        document.getElementById('signup-form').addEventListener('submit', function(event) {
+            var emailInput = document.getElementById('email');
+            var passwordInput = document.getElementById('password');
+            var emailError = document.getElementById('email-error');
+            var passwordError = document.getElementById('password-error');
+
+            var email = emailInput.value;
+            var password = passwordInput.value;
+
+            // Regex to check email format
+            var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+            // Regex to ensure password is at least 6 characters and has a number or symbol
+            var passwordPattern = /^(?=.*[0-9!@#$%^&*])[A-Za-z0-9!@#$%^&*]{6,}$/;
+
+            // Validate email
+            if (!emailPattern.test(email)) {
+                emailError.style.display = 'block';
+                event.preventDefault(); // Stop form submission
+            } else {
+                emailError.style.display = 'none';
+            }
+
+            // Validate password
+            if (!passwordPattern.test(password)) {
+                passwordError.style.display = 'block';
+                event.preventDefault(); // Stop form submission
+            } else {
+                passwordError.style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+</html>
