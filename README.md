@@ -13,8 +13,8 @@ Flask-based web application where users can log in, create, and decorate virtual
 
 ### 1. Clone the repository
 First, clone the project repository from GitHub to your local machine. Open your terminal and run the following command:
-```git clone https://github.com/AnaKopadze01/therooms.git
-cd therooms```
+`git clone https://github.com/AnaKopadze01/therooms.git `
+`cd therooms`
 
 
 ### 2. Set up a virtual environment
