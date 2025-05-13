@@ -29,17 +29,6 @@ mail = Mail(app)
 # Secret key for sessions and CSRF protection
 app.secret_key = 'your_secret_key_here'
 
-# Route to verify email sending functionality
-@app.route('/test-email')
-def test_email():
-    try:
-        msg = Message('Test Email from Therooms',
-                      recipients=['ana.kopadze31@gmail.com'])
-        msg.body = 'This is a test email sent from your Flask app.'
-        mail.send(msg)
-        return 'Test email sent successfully!'
-    except Exception as e:
-        return f'Error sending email: {str(e)}'
 
 # Create tables in the database if they don't already exist
 def init_db():
