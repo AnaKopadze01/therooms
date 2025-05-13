@@ -156,7 +156,7 @@ def forgot_password():
 
         if user:
             # Send reset link via email
-            reset_link = f'http://127.0.0.1:5001/reset-password/{user[0]}'
+            reset_link = f'http://127.0.0.1:5000/reset-password/{user[0]}'
             msg = Message("Password Reset Request",
                           recipients=[email],
                           body=f"Click on the following link to reset your password: {reset_link}")
