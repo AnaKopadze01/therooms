@@ -62,7 +62,7 @@ Replace the placeholders with your actual values.
 nce the environment is set up, run the Flask application with:
 `flask run`
 
-The development server will start and you can access the application at http://localhost:5001 in your browser.
+The development server will start and you can access the application at http://localhost:5000 in your browser.
 
 
 
@@ -80,6 +80,6 @@ From the root of the project directory, build the Docker image using the followi
 Run the Docker container with the command below, mapping the port 5001 on your machine to the Docker container’s port 5001:
 `docker run -p 5001:5001 --env-file .env therooms-app`
 
-The app will be available at http://localhost:5001 in your browser.
+The app will be available at http://localhost:5000 in your browser.
 
 
